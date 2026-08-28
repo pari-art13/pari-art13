@@ -14,7 +14,7 @@ if(form){
   Object.keys(data).forEach(k=>data[k]=data[k].trim());
   if(data.name.length<2||!data.email||!data.subject||data.message.length<10){statusEl.textContent="Please complete all fields correctly.";return}
   submitBtn.disabled=true;submitBtn.textContent="Sending...";
-  const API_BASE=window.PORTFOLIO_API_BASE||"http://localhost:5000";
+  const API_BASE=window.PORTFOLIO_API_BASE||"https://pari-portfolio-api.onrender.com";
   try{
     const response=await fetch(`${API_BASE}/api/contact`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
     const result=await response.json(); if(!response.ok)throw new Error(result.message||"Unable to send");
